@@ -11,6 +11,10 @@
 - [Docker](https://docs.docker.com/engine/install/)
 - [docker-compose](https://docs.docker.com/compose/install/)
 
+## Environment 
+
+Set ``MEILI_MASTER_KEY`` environment variable to allow only applications with the Key API.
+
 ## Usage
 
 ```bash

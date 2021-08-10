@@ -1,14 +1,30 @@
 version: '3'
 
 services:
-
   meilisearch:
     container_name: meilisearch
-    image: getmeili/meilisearch:v0.12.0
+    image: getmeili/meilisearch:v0.21.0rc4
     environment:
-      http_proxy: ${http_proxy}
-      https_proxy: ${https_proxy}
-      no_proxy: ${no_proxy}
+      - http_proxy
+      - https_proxy
+      - no_proxy
+      - MEILI_MASTER_KEY
+      - MEILI_ENV=production
+    volumes: 
+      - ./data.ms:/data.ms
     ports:
       - 7700:7700
     restart: unless-stopped
+
+  scraper:
+    container_name: meilisearch_docs_scraper
+    image: getmeili/docs-scraper:v0.10.4
+    volumes:
+      - ./scrapers/vuepress.json:/docs-scraper/config.json
+    environment:
+      - http_proxy
+      - https_proxy
+      - no_proxy
+      - MEILISEARCH_HOST_URL=http://meilisearch:7700
+      - MEILISEARCH_API_KEY=${MEILI_MASTER_KEY}
+    command: pipenv run ./docs_scraper config.json
