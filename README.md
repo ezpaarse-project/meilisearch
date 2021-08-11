@@ -15,6 +15,8 @@
 
 Set ``MEILI_MASTER_KEY`` environment variable to allow only applications with the Key API.
 
+Set ``MEILISEARCH_HOST_URL`` environment variable to set meilisearch url instance to use scraper
+
 ## Usage
 
 ```bash

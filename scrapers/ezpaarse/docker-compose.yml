@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  scraper:
+    container_name: meilisearch_docs_scraper
+    image: getmeili/docs-scraper:v0.10.4
+    volumes:
+      - ./scrapers/vuepress.json:/docs-scraper/config.json
+    environment:
+      - http_proxy
+      - https_proxy
+      - no_proxy
+      - MEILISEARCH_HOST_URL
+      - MEILISEARCH_API_KEY=${MEILI_MASTER_KEY}
+    command: pipenv run ./docs_scraper config.json
