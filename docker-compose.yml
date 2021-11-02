@@ -3,15 +3,16 @@ version: '3'
 services:
   meilisearch:
     container_name: meilisearch
-    image: getmeili/meilisearch:v0.21.0rc4
+    image: getmeili/meilisearch:v0.24.0rc0
     environment:
       - http_proxy
       - https_proxy
       - no_proxy
       - MEILI_MASTER_KEY
-      - MEILI_ENV=production
-    volumes: 
-      - ./data.ms:/data.ms
+      - MEILI_NO_ANALYTICS=${MEILI_NO_ANALYTICS:-false}
+      - MEILI_ENV=${APP_PROFILE:-production}
     ports:
-      - 7700:7700
+      - ${MEILI_PORT:-7700}:7700
+    networks:
+      - meilisearch
     restart: unless-stopped
