@@ -23,10 +23,10 @@ Set ``MEILISEARCH_HOST_URL`` environment variable to set meilisearch url instanc
 $ mkdir meilisearch/
 $ cd meilisearch/
 
+$ wget --no-check-certificate https://raw.githubusercontent.com/ezpaarse-project/meilisearch/master/docker-compose.yml
+
 # Chown data.ms folder
 $ docker-compose run --rm -u meili meilisearch chown meili -R /data.ms
-
-$ wget --no-check-certificate https://raw.githubusercontent.com/ezpaarse-project/meilisearch/master/docker-compose.yml
 
 $ docker-compose up -d
 ```
