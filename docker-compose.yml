@@ -7,10 +7,10 @@ services:
     environment:
       - http_proxy
       - https_proxy
-      - MEILI_MASTER_KEY
-      - MEILI_NO_ANALYTICS=${MEILI_NO_ANALYTICS:-false}
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-masterKey}
+      - MEILI_NO_ANALYTICS=${MEILI_NO_ANALYTICS:-true}
       - MEILI_ENV=${APP_PROFILE:-production}
-      - MEILI_LOG_LEVEL=${MEILI_LOG_LEVEL:-trace}
+      - MEILI_LOG_LEVEL=${MEILI_LOG_LEVEL:-info}
       - MEILI_DB_PATH=${MEILI_DB_PATH:-/data.ms}
     ports:
       - ${MEILI_PORT:-7700}:7700
