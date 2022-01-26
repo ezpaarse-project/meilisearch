@@ -3,14 +3,14 @@ version: '3'
 services:
   scraper:
     container_name: meilisearch_docs_scraper
-    image: getmeili/docs-scraper:v0.11.0
+    image: getmeili/docs-scraper:v0.12.0
     volumes:
       - ./ezpaarse.json:/docs-scraper/config.json
     environment:
       - http_proxy
       - https_proxy
       - MEILISEARCH_HOST_URL
-      - MEILISEARCH_API_KEY=${MEILI_MASTER_KEY}
+      - MEILISEARCH_API_KEY=${MEILI_MASTER_KEY:-masterKey}
     networks:
       - meilisearch
     command: pipenv run ./docs_scraper config.json
